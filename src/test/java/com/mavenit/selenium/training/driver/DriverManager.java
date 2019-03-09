@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class DriverManager {
 
     public static WebDriver driver;
-    private String browser = "";
+    private String browser = System.getProperty("instance");
 
 
     public DriverManager() {

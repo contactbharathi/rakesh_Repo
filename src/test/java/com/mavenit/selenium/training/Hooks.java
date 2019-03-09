@@ -8,11 +8,12 @@ public class Hooks {
 
 
     private DriverManager driverManager = new DriverManager();
+    private String url=System.getProperty("url");
 
     @Before
     public void setUp() {
-        driverManager.runOnRemoteHost();
-        driverManager.navigateTo("https://www.argos.co.uk");
+        driverManager.runOnLocalHost();
+        driverManager.navigateTo(url);
         driverManager.maxBroser();
         driverManager.applyImplicit();
         driverManager.handleCookies();
