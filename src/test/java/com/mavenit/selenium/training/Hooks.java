@@ -1,6 +1,7 @@
 package com.mavenit.selenium.training;
 
 import com.mavenit.selenium.training.driver.DriverManager;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
@@ -12,6 +13,7 @@ public class Hooks {
 
     @Before
     public void setUp() {
+
         System.out.println("URL: "+url);
         driverManager.runOnRemoteHost();
         driverManager.navigateTo(url);
@@ -21,7 +23,13 @@ public class Hooks {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
+
+
+        if(scenario.isFailed()){
+            driverManager.takeSceenShot(scenario);
+        }
+
         driverManager.closeBrowser();
     }
 }

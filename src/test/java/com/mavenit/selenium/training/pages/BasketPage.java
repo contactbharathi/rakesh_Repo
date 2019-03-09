@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BasketPage  extends DriverManager {
 
-    @FindBy(css = "a[data-e2e='product-name']")
+    @FindBy(css = "a[data-e2e='product-namedhfkjdghkdfj']")
     private List<WebElement> productsInBasket;
 
     public List<String> getProductsInBaskets(){

@@ -1,9 +1,8 @@
 package com.mavenit.selenium.training.driver;
 
+import cucumber.api.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -28,7 +27,7 @@ public class DriverManager {
     }
 
     public void runOnLocalHost() {
-        System.out.println("Running instance is : "+browser);
+        System.out.println("Running instance is : " + browser);
 
         switch (browser) {
             case "ie":
@@ -40,6 +39,7 @@ public class DriverManager {
                 driver = new ChromeDriver();
                 break;
             default:
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
         }
     }
@@ -88,7 +88,13 @@ public class DriverManager {
         return new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public Boolean waitUntilElementInvisible(By by){
-        return new WebDriverWait(driver,15).until(ExpectedConditions.invisibilityOfElementLocated(by));
+    public Boolean waitUntilElementInvisible(By by) {
+        return new WebDriverWait(driver, 15).until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
+
+    public void takeSceenShot(Scenario scenario) {
+        byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        scenario.embed(screenShot, "image/png");
     }
 }
