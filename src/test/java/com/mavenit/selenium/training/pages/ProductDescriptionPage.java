@@ -9,7 +9,7 @@ public class ProductDescriptionPage extends DriverManager {
     @FindBy(xpath = "//div[4]/div[2]/button/span/span")
     private WebElement trolleyBtn;
 
-    @FindBy(xpath = "//a[contains(text(),'Go to Trolley')]")
+    @FindBy(xpath = "//a[contains(text(),'Go to kdafhisudhfsdhf')]")
     private WebElement goToTrolleyBtn;
 
     public void addToBasket() {
