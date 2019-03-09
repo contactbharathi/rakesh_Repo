@@ -12,7 +12,8 @@ public class Hooks {
 
     @Before
     public void setUp() {
-        driverManager.runOnLocalHost();
+        System.out.println("URL: "+url);
+        driverManager.runOnRemoteHost();
         driverManager.navigateTo(url);
         driverManager.maxBroser();
         driverManager.applyImplicit();

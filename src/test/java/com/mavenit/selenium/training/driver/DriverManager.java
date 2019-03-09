@@ -28,6 +28,8 @@ public class DriverManager {
     }
 
     public void runOnLocalHost() {
+        System.out.println("Running instance is : "+browser);
+
         switch (browser) {
             case "ie":
                 WebDriverManager.iedriver().setup();
