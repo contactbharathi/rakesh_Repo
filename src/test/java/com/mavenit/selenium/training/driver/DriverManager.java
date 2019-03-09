@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class DriverManager {
 
     public static WebDriver driver;
-    private String browser = "chrome";
+    private String browser = "";
 
 
     public DriverManager() {
@@ -46,7 +46,7 @@ public class DriverManager {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
         try {
-            driver = new RemoteWebDriver(new URL("http://172.26.0.4:4444/wd/hub"), capabilities);
+            driver = new RemoteWebDriver(new URL("http://192.168.0.6:4444/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
