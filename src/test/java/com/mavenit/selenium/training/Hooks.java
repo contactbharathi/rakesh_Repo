@@ -11,7 +11,7 @@ public class Hooks {
 
     @Before
     public void setUp() {
-        driverManager.openBrowser();
+        driverManager.runOnRemoteHost();
         driverManager.navigateTo("https://www.argos.co.uk");
         driverManager.maxBroser();
         driverManager.applyImplicit();

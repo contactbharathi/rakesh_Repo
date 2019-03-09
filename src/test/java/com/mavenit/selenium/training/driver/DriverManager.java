@@ -7,10 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
@@ -23,7 +27,7 @@ public class DriverManager {
         PageFactory.initElements(driver, this);
     }
 
-    public void openBrowser() {
+    public void runOnLocalHost() {
         switch (browser) {
             case "ie":
                 WebDriverManager.iedriver().setup();
@@ -35,6 +39,16 @@ public class DriverManager {
                 break;
             default:
                 driver = new FirefoxDriver();
+        }
+    }
+
+    public void runOnRemoteHost() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName("chrome");
+        try {
+            driver = new RemoteWebDriver(new URL("http://172.26.0.4:4444/wd/hub"), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 
