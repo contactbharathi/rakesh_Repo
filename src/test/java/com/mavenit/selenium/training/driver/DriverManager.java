@@ -46,7 +46,7 @@ public class DriverManager {
 
     public void runOnRemoteHost() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName("chrome");
+        capabilities.setBrowserName("firefox");
         try {
             driver = new RemoteWebDriver(new URL("http://192.168.0.17:4444/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
