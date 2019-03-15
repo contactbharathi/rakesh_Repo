@@ -4,7 +4,7 @@ Feature: Basket
   I want to add a product to basket
   So that i buy products
 
-  @smoke @rk
+  @smoke 
   Scenario: add product to basket
     Given I am on homepage
     When I search for a product "puma"
